@@ -8,8 +8,13 @@ export async function POST(request) {
   const body = await request.json();
   const { uploadPayload, expire } = body;
 
+  const payload = {
+      ...uploadPayload,
+      useUniqueFileName: String(uploadPayload.useUniqueFileName)
+  };
+
   const token = jwt.sign(
-    uploadPayload,
+    payload,
     privateKey,
     {
       expiresIn: expire,
