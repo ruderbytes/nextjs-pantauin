@@ -9,7 +9,7 @@ export async function POST(request) {
   const { uploadPayload, expire } = body;
 
   const payload = {
-      ...uploadPayload,
+      fileName: String(uploadPayload.fileName),
       useUniqueFileName: String(uploadPayload.useUniqueFileName)
   };
 
